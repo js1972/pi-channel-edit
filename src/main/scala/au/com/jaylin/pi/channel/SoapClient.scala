@@ -36,8 +36,8 @@ class SoapClient {
             Some(XML.load(conn.getInputStream()))
         }
         catch {
-          case e: Exception => error("post: " + e)
-              error("post:" + scala.io.Source.fromInputStream(conn.getErrorStream).mkString)
+          case e: Exception => 
+              error("SOAP call error:" + e.getMessage())
               None
         }
     }
