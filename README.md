@@ -24,6 +24,7 @@ Both the above REST services rely on BASIC authentication. This has currently be
 
 ###Configuration
 You must add an application.conf file in src/main/resources which includes the following (its hidden so as to not show our pi server):
+
     akka {
       loglevel = INFO
     }
