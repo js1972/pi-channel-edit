@@ -14,6 +14,7 @@ When setting up a test case in soapUI the first step is to insert a REST call to
 
 Format of final URL component: <Party>:<Component>:<ChannelID>
 Querystring: param is the communicaiton channel parameter you wish to change (mock); value is the new value.
+
 This call returns the old value which can be saved and swapped back in at the end of the soapUI test run.
 
 A list of available comm.channel parameter codes can be seen by executing service:
@@ -21,6 +22,7 @@ A list of available comm.channel parameter codes can be seen by executing servic
 
 Both the above REST services rely on BASIC authentication. This has currently been implemented to simply fall through to the PI web service for authentication.
 
+###Configuration
 You must add an application.conf file in src/main/resources which includes the following (its hidden so as to not show our pi server):
     akka {
       loglevel = INFO
@@ -45,8 +47,8 @@ You must add an application.conf file in src/main/resources which includes the f
     }
 
 To execute this api:
-1) clone the repo and cd into the top-level directory
-2) add the application.conf file to src/main/resources
-3) run sbt (all dependancie will download) and then enter container:start at the sbt command prompt
-4) access the api via your browser or favourite rest client or soapUI for testing a PI interface.
+1. clone the repo and cd into the top-level directory
+2. add the application.conf file to src/main/resources
+3. run sbt (all dependancie will download) and then enter container:start at the sbt command prompt
+4. access the api via your browser or favourite rest client or soapUI for testing a PI interface.
 
