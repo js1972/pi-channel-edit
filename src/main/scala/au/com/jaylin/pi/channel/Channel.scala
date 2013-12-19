@@ -5,12 +5,14 @@ import scala.xml.Node
 import scala.xml.Elem
 import scala.xml.transform.RuleTransformer
 import scala.xml.NodeSeq
+import com.typesafe.config._
 
 
 class Channel(val party: String, val component: String, val id: String, val auth: String) {
     var changeListID = ""
     val userName = auth.split(":")(0)
     val userPass = auth.split(":")(1)
+    val conf = ConfigFactory.load()
     
     /**
      * Read the comm.channel details and return the CommunicationChannel element.
@@ -27,7 +29,7 @@ class Channel(val party: String, val component: String, val id: String, val auth
                        </yq1:CommunicationChannelReadRequest>
                    </pns:read>
 
-        val resp = client.sendMessage("http://app1poy.inpex.com.au:58000/CommunicationChannelService/HTTPBasicAuth?style=document", req, userName, userPass)
+        val resp = client.sendMessage(conf.getString("config.host") + "/CommunicationChannelService/HTTPBasicAuth?style=document", req, userName, userPass)
         
         if (resp.isDefined) {
             val nodes = (resp.get \\ "CommunicationChannel")
@@ -83,7 +85,7 @@ class Channel(val party: String, val component: String, val id: String, val auth
         val oldValue = findValueGivenName(xmlNodes, paramToChange)
         
         val client = new SoapClient
-        val resp = client.sendMessage("http://app1poy.inpex.com.au:58000/CommunicationChannelService/HTTPBasicAuth?style=document", req, "jscott", "sophie05")
+        val resp = client.sendMessage(conf.getString("config.host") + "/CommunicationChannelService/HTTPBasicAuth?style=document", req, "jscott", "sophie05")
         
         if (resp.isDefined) {
             val nodes = (resp.get \\ "ChangeListID")
@@ -107,7 +109,7 @@ class Channel(val party: String, val component: String, val id: String, val auth
                       </pns:activate>
 
             val client = new SoapClient
-            val resp = client.sendMessage("http://app1poy.inpex.com.au:58000/ChangeListService/HTTPBasicAuth?style=document", req, "jscott", "sophie05")
+            val resp = client.sendMessage(conf.getString("config.host") + "/ChangeListService/HTTPBasicAuth?style=document", req, "jscott", "sophie05")
             if (resp.isDefined) {
                 val messageNodes = (resp.get \\ "Message" \ "value")
                 if (messageNodes.text.length == 0) Some("Success")
