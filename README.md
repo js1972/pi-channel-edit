@@ -58,4 +58,4 @@ You must add an application.conf file in src/main/resources which includes the f
 2. Drop the war file into Tomcats webapps directory and start Tomcat. The war file will be expanded into its own directory
 3. Navigate to src/main/resources/application.conf and edit the target PI server hostname to match your PI server. Restart Tomcat
 4. You can now access the api at http://localhost:8081/zpi-channel-edit/channel.
-5. 
+
