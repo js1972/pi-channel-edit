@@ -47,8 +47,12 @@ You must add an application.conf file in src/main/resources which includes the f
       host="<hostname of PI Server>:<port>"
     }
 
-###Execute
+###Build and Execute
 1. Clone the repo and cd into the top-level directory
 2. Add the application.conf file to src/main/resources
 3. Run sbt (all dependancie will download) and then enter container:start at the sbt command prompt
 4. Access the api via your browser or favourite rest client or soapUI for testing a PI interface.
+
+### Execute in standalone container (ie Tomcat)
+1. Download zpi-channel-edit.war from blah
+2. blah
