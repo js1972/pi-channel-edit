@@ -60,3 +60,7 @@ You must add an application.conf file in src/main/resources which includes the f
 3. Navigate to src/main/resources/application.conf and edit the target PI server hostname to match your PI server. Restart Tomcat
 4. You can now access the api at http://localhost:<tomcat\_port\_default_8080>/zpi-channel-edit/channel.
 
+###Further Notes
+We cannot deploy this webapp to a SAP NetWeaver PI server as SAP-Java is still the old JEE5 and cannot run Servlet 3.0! Come on SAP - move on with the world - you're still in the dark ages here...
+
+At some stage I'll re-do the rest layer to use Jersey and Servlet 2.5 so that is can be deployed directly onto PI.
