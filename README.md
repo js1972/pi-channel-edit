@@ -55,7 +55,7 @@ You must add an application.conf file in src/main/resources which includes the f
 5. If you wish to run in a standalone Tomcat container then you need to rename the war file to zpi-channel-edit.war as Tomcat doesn't like us specifying a context-root when run with auto-deployment.
 
 ### Execute in standalone container (ie Tomcat)
-1. Download zpi-channel-edit.war from blah
+1. Download zpi-channel-edit.war from https://github.com/js1972/pi-channel-edit/releases/tag/v1.0
 2. Drop the war file into Tomcats webapps directory and start Tomcat. The war file will be expanded into its own directory
 3. Navigate to src/main/resources/application.conf and edit the target PI server hostname to match your PI server. Restart Tomcat
 4. You can now access the api at http://localhost:<tomcat\_port\_default_8080>/zpi-channel-edit/channel.
